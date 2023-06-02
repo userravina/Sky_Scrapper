@@ -5,19 +5,14 @@ import 'package:sky_scrapper/Random_Api/modal/Random_modal.dart';
 class Random_provider extends ChangeNotifier{
   // RandomUserModel? homeModeldata;
    RandomUserModel? data;
-  Future<RandomUserModel> Randomdata()
-  async {
-    print("========== START");
-    Api_Helper api_helper = Api_Helper();
-    RandomUserModel? newsModal = await api_helper.Randomgetdata();
-    print("==============  $newsModal");
-    // homeModeldata = newsModal;
-    return newsModal;
-  }
+   void getData() async {
+     data = await Api_Helper.api_helper.Randomgetdata();
+     notifyListeners();
+   }
 
-  void Refresh(index) {
-    data = index;
-    notifyListeners();
-  }
-  notifyListeners();
+  // void Refresh(index) {
+  //   data = index;
+  //   notifyListeners();
+  // }
+  // notifyListeners();
 }
